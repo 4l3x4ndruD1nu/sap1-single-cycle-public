@@ -34,6 +34,5 @@ module MUX2_1(
         else
             r = B;
     end
-    
     assign C = r;        
 endmodule
