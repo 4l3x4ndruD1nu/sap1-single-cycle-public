@@ -4,4 +4,5 @@ module ALU(
     output wire [5:0] S //rezultatul
 );
 //TODO:
+
 endmodule

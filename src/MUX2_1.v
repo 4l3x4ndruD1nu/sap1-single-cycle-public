@@ -20,7 +20,20 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module mux2_1(
-
-    );
+module MUX2_1(
+    input wire SEL,
+    input wire [5:0] A, //Datele din ALU
+    input wire [5:0] B, //Datele din DECODER
+    output wire [5:0] C
+);
+//TODO
+    reg [5:0] r;
+    always @(*)begin
+        if(SEL == 1'b1)
+            r = A;
+        else
+            r = B;
+    end
+    
+    assign C = r;        
 endmodule
