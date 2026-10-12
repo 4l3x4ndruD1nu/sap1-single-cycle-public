@@ -15,7 +15,7 @@ module divizor_ceas
     
     always @(posedge clk_in or negedge rst) begin
         if (rst)
-            counter = 0;
+            counter <= 0;
         else
             counter <= counter + 1;
     end

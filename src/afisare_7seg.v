@@ -14,7 +14,7 @@ reg [1:0]S; // stari de afisare
 
 always @(posedge clk_out_seg)
 begin
-    if (!reset)
+    if (reset)
         S = 2'b00;
 
     An[7:4] = 4'b1111;
