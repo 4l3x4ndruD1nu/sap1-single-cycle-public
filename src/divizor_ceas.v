@@ -13,7 +13,7 @@ module divizor_ceas
 (input clk_in, input rst, output clk_out_led, clk_out_seg);
     reg [counter_width : 0] counter = 1'b0;
     
-    always @(posedge clk_in or negedge rst) begin
+    always @(posedge clk_in or posedge rst) begin
         if (rst)
             counter <= 0;
         else
