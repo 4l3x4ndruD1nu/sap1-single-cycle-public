@@ -6,9 +6,9 @@ module CPU(
     // citeste noua adresa a instructiunii ce urmeaza a fi executata
     wire [7:0] current_address;
     wire HALT;
-    wire BEQ_FLAG = 1'b0;
-    wire [5:0] BEQ_OFFSET = 6'b0;
-    wire ZERO_FLAG = 1'b0;
+    wire BEQ_FLAG;
+    wire [5:0] BEQ_OFFSET;
+    wire ZERO_FLAG;
     PC program_counter(clk, reset, ~HALT, ZERO_FLAG, BEQ_FLAG, BEQ_OFFSET, current_address);
 
     //citeste instructiunea ce urmeaza a fi executata

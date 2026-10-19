@@ -11,7 +11,7 @@ module DECODER(
     output wire [5:0] B, //data adunata/scazuta la/din acumulator
     output wire HALT, //semnalul de oprire a procesorului ce dezactiveaza registrul PC
     output wire BEQ_FLAG, // daca sau nu facem jump
-    output wire BEQ_OFFSET // cu cat facem jump
+    output [5:0] BEQ_OFFSET // cu cat facem jump
 );
 
     parameter LOAD_PREFIX = 2'b00;
