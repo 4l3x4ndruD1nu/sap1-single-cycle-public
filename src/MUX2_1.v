@@ -26,13 +26,5 @@ module MUX2_1(
     input wire [5:0] B, //Datele din DECODER
     output wire [5:0] C
 );
-//TODO
-    reg [5:0] r;
-    always @(*)begin
-        if(SEL == 1'b1)
-            r = A;
-        else
-            r = B;
-    end
-    assign C = r;        
+    assign C = SEL ? B : A;      
 endmodule

@@ -45,7 +45,7 @@ module DECODER(
     always @(*) begin
         // default values
         op_res = 1'b0; // add
-        load_acc_res = 1'b0; // do not load
+        load_acc_res = 1'b1; // do not load
         out_acc_res = 1'b0; // do not send to output
         A_res = 6'b0; // A = 0
         B_res = 6'b0; // B = 0
@@ -53,19 +53,19 @@ module DECODER(
     
         case (instr[7:6])
             LOAD_PREFIX: begin
-                load_acc_res = 1'b0; // load data from decoder
+                load_acc_res = 1'b1; // load data from decoder
                 A_res = instr[5:0];
             end
             
             ADD_PREFIX: begin
                 op_res = 1'b0; // add
-                load_acc_res = 1'b1; // load data from ALU
+                load_acc_res = 1'b0; // load data from ALU
                 B_res = instr[5:0];
             end
             
             SUB_PREFIX: begin
                 op_res = 1'b1; // sub
-                load_acc_res = 1'b1; // load data frmo ALU
+                load_acc_res = 1'b0; // load data frmo ALU
                 B_res = instr[5:0];
             end
             
