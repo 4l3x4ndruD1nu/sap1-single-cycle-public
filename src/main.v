@@ -8,15 +8,14 @@ module main(
     output DP
 );
     wire [5:0] acc;
-    wire [5:0] out;
     wire [3:0] BCD0, BCD1;
     wire clk_out_led, clk_out_seg;
 
     divizor_ceas clk_div(clk, rst, clk_out_led, clk_out_seg);
 
-    CPU cpu(clk_out_led, rst, acc, out);
+    CPU cpu(clk_out_led, rst, acc);
 
-    bin2bcd binary_decimal_converter(out, BCD0, BCD1);
+    bin2bcd binary_decimal_converter(acc, BCD0, BCD1);
 
     afisare_7seg seg_display(clk_out_seg, rst, 4'd0, 4'd0, BCD0, BCD1, An, Seg, DP);
 endmodule

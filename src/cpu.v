@@ -1,8 +1,7 @@
 module CPU(
     input wire clk,
     input wire reset,
-    output wire [5:0] acc,
-    output reg [5:0] out
+    output wire [5:0] acc
 );
     // citeste noua adresa a instructiunii ce urmeaza a fi executata
     wire [7:0] current_address;
@@ -32,9 +31,5 @@ module CPU(
 
     // scoate la output valoarea curenta a accumulatorului pentru debugging
     assign acc = ACC_OUT;
-    
-    always @(posedge clk) begin
-        out <= acc;
-    end
-    
+        
 endmodule
