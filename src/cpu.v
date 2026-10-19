@@ -6,7 +6,10 @@ module CPU(
     // citeste noua adresa a instructiunii ce urmeaza a fi executata
     wire [7:0] current_address;
     wire HALT;
-    PC program_counter(clk, reset, ~HALT, current_address);
+    wire BEQ_FLAG = 1'b0;
+    wire [5:0] BEQ_OFFSET = 6'b0;
+    wire ZERO_FLAG = 1'b0;
+    PC program_counter(clk, reset, ~HALT, ZERO_FLAG, BEQ_FLAG, BEQ_OFFSET, current_address);
 
     //citeste instructiunea ce urmeaza a fi executata
     wire [7:0] current_instr;
@@ -18,7 +21,7 @@ module CPU(
     wire OUT_ACC;
     wire [5:0] A;
     wire [5:0] B;
-    DECODER instruction_decoder(current_instr, OP, LOAD_ACC, OUT_ACC, A, B, HALT);
+    DECODER instruction_decoder(current_instr, ZERO_FLAG, OP, LOAD_ACC, OUT_ACC, A, B, HALT, BEQ_FLAG, BEQ_OFFSET);
 
     //incarca sau citeste date in/din registrul accumularor
     wire [5:0] ACC_IN, ACC_OUT;
@@ -31,5 +34,6 @@ module CPU(
 
     // scoate la output valoarea curenta a accumulatorului pentru debugging
     assign acc = ACC_OUT;
-        
+    // flag folosit pt BEQ
+    assign ZERO_FLAG = ACC_OUT == 6'b0;
 endmodule
